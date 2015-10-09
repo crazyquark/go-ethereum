@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install dependencies
-sudo apt-get install -y build-essential git libgmp3-dev golang
+sudo apt-get install -y build-essential git libgmp3-dev screen golang
 
 # Setup GO
 export GOPATH=$HOME/go

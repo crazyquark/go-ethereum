@@ -27,9 +27,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "bootstrap.sh"
 
   config.vm.define "geth1", primary: true do |geth1|
+    #geth1.vm.network "public_network", ip: "192.168.50.2", bridge: "eth0"
     geth1.vm.network "private_network", ip: "192.168.50.2"
     geth1.vm.provider :virtualbox do |vb|
-    
+
     vb.memory = 4096
     vb.customize ["modifyvm", :id, "--cpus", 2]
     end

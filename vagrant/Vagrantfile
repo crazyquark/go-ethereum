@@ -26,25 +26,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   PORT = 30310
   config.vm.provision :shell, :path => "bootstrap.sh"
+
   config.vm.define "geth1", primary: true do |geth1|
     # geth1.vm.network "public_network", ip: "192.168.50.2", bridge: "eth0"
     geth1.vm.network "private_network", ip: "192.168.50.2"
     config.vm.network "forwarded_port", guest: PORT, host: PORT
     geth1.vm.provider :virtualbox do |vb|
-      #
-      # # default router
-      # config.vm.provision "shell",
-      #   run: "always",
-      #   inline: "route add default gw 192.168.50.1"
-      #
-      # # delete default gw on eth0
-      # config.vm.provision "shell",
-      #   run: "always",
-      #   inline: "eval `route -n | awk '{ if ($8 ==\"eth1\" && $2 != \"0.0.0.0\") print \"route del default gw \" $2; }'`"
       vb.memory = 4096
       vb.customize ["modifyvm", :id, "--cpus", 2]
     end
 
-    config.vm.provision :shell, :run => "always", :path => "scripts/startGeth.sh", :args => PORT
+    config.vm.provision "shell", path: "scripts/startGeth.sh", args: PORT,
+      run: "always"
   end
+
 end

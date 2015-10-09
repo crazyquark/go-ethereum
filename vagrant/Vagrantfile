@@ -26,13 +26,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, :path => "bootstrap.sh"
 
-  config.vm.define "one", primary: true do |one|
-    one.vm.network "private_network", ip: "192.168.50.4"
-    one.vm.provider :virtualbox do |vb|
+  config.vm.define "geth1", primary: true do |geth1|
+    geth1.vm.network "private_network", ip: "192.168.50.2"
+    geth1.vm.provider :virtualbox do |vb|
+    
     vb.memory = 4096
     vb.customize ["modifyvm", :id, "--cpus", 2]
     end
-
-    #config.vm.provision :shell, :path => "bootstrap_and_build.sh", :args=>"one"
   end
 end

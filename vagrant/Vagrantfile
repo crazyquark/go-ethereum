@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "debian/jessie64"
+
+  if Vagrant.has_plugin?("vagrant-timezone")
+    config.timezone.value = "Europe/Bucharest"
+  end
+
+  config.vm.provision :shell, :inline => <<-EOT
+     sudo sed -i '/LC_ALL=/d' /etc/default/locale
+     echo 'LC_ALL="en_US.UTF-8"' |sudo tee -a /etc/default/locale
+  EOT
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.customize ["modifyvm", :id, "--cpus", 1]
+    # v.gui = true
+  end
+
+  config.vm.synced_folder "..", "/go-ethereum", owner: "root", group: "root"
+
+  config.vm.provision :shell, :path => "bootstrap.sh"
+
+  config.vm.define "one", primary: true do |one|
+    one.vm.network "private_network", ip: "192.168.50.4"
+    one.vm.provider :virtualbox do |vb|
+    vb.memory = 4096
+    vb.customize ["modifyvm", :id, "--cpus", 2]
+    end
+
+    #config.vm.provision :shell, :path => "bootstrap_and_build.sh", :args=>"one"
+  end
+end

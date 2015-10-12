@@ -57,9 +57,9 @@ func CalcDifficulty(time, parentTime uint64, parentNumber, parentDiff *big.Int) 
 	bigParentTime.SetUint64(parentTime)
 
 	if bigTime.Sub(bigTime, bigParentTime).Cmp(params.DurationLimit) < 0 {
-		diff.Add(parentDiff, adjust)
+		diff.Mul(parentDiff, adjust)
 	} else {
-		diff.Sub(parentDiff, adjust)
+		diff.Div(parentDiff, adjust)
 	}
 	if diff.Cmp(params.MinimumDifficulty) < 0 {
 		diff = params.MinimumDifficulty

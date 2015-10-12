@@ -46,9 +46,9 @@ var (
 	Sha256Gas            = big.NewInt(60)     //
 	IdentityWordGas      = big.NewInt(3)      //
 	Sha3WordGas          = big.NewInt(6)      // Once per word of the SHA3 operation's data.
-	SstoreResetGas       = big.NewInt(5500)   // Once per SSTORE operation if the zeroness changes from zero.
-	SstoreClearGas       = big.NewInt(5500)   // Once per SSTORE operation if the zeroness doesn't change.
-	SstoreRefundGas      = big.NewInt(5500)  // Once per SSTORE operation if the zeroness changes to zero.
+	SstoreResetGas       = big.NewInt(5000)   // Once per SSTORE operation if the zeroness changes from zero.
+	SstoreClearGas       = big.NewInt(5000)   // Once per SSTORE operation if the zeroness doesn't change.
+	SstoreRefundGas      = big.NewInt(5000)  // Once per SSTORE operation if the zeroness changes to zero.
 	JumpdestGas          = big.NewInt(1)      // Refunded gas, once per SSTORE operation if the zeroness changes to zero.
 	IdentityGas          = big.NewInt(15)     //
 	GasLimitBoundDivisor = big.NewInt(1024)   // The bound divisor of the gas limit, used in update calculations.
@@ -65,8 +65,8 @@ var (
 	StackLimit           = big.NewInt(1024)   // Maximum size of VM stack allowed.
 	TierStepGas          = big.NewInt(0)      // Once per operation, for a selection of them.
 	LogTopicGas          = big.NewInt(375)    // Multiplied by the * of the LOG*, per LOG transaction. e.g. LOG0 incurs 0 * c_txLogTopicGas, LOG4 incurs 4 * c_txLogTopicGas.
-	CreateGas            = big.NewInt(5500)  // Once per CREATE operation & contract-creation transaction.
-	SuicideRefundGas     = big.NewInt(5500)  // Refunded following a suicide operation.
+	CreateGas            = big.NewInt(5000)  // Once per CREATE operation & contract-creation transaction.
+	SuicideRefundGas     = big.NewInt(5000)  // Refunded following a suicide operation.
 	MemoryGas            = big.NewInt(3)      // Times the address of the (highest referenced byte in memory + 1). NOTE: referencing happens on read, write and in instructions such as RETURN and CALL.
-	TxDataNonZeroGas     = big.NewInt(68)     // Per byte of data attached to a transaction that is not equal to zero. NOTE: Not payable on data of calls between transactions.
+	TxDataNonZeroGas     = big.NewInt(1)     // Per byte of data attached to a transaction that is not equal to zero. NOTE: Not payable on data of calls between transactions.
 )

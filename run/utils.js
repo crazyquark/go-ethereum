@@ -21,13 +21,15 @@ function findBlockByTransactionHash(transactionHash, limit) {
 		console.log ("Transaction hash argument is missing or invalid!");
 	}
 	
-	if (limit === undefined || limit < 1 || limit > 2000) {
+	if (limit === undefined || limit < 1) {
 		limit = 2000;
 	}
 	
 	var blockCursor = eth.getBlock("latest");
 	console.log ("Searching ...");
-	while (limit > 0) {
+	
+	var limitCursor = limit;
+	while (limitCursor > 0) {
 		
 		if (!blockCursor) {
 			console.log ("Reached null block, transaction was not found!");
@@ -44,9 +46,10 @@ function findBlockByTransactionHash(transactionHash, limit) {
 		
 		var nextBlockNumber = blockCursor.number - 1;
 		blockCursor = eth.getBlock(nextBlockNumber);
-		--limit;
+		--limitCursor;
 	}
 	
-	
+	console.log("Reached " + limit + " limit, transaction was not found!");
+	return null;
 	
 }

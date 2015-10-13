@@ -10,7 +10,7 @@ cmd='./../build/bin/geth --nodiscover --port 30309 --networkid 536354 console'
 if [ -z $CONSOLE ]; then
 	cmd='screen '$cmd
 else
-	cmd=$cmd ' 2>> $CONSOLE'
+	cmd=$cmd' 2>> $CONSOLE'
 fi
 
 eval $cmd

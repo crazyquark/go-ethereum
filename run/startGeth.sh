@@ -3,12 +3,16 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 pushd $DIR
+CONSOLE=$1
 
-if [ -z $1 ]; then
-	call=`screen ./../build/bin/geth --nodiscover --port 30309 --networkid "536354" console`
+cmd='./../build/bin/geth --nodiscover --port 30309 --networkid 536354 console'
+
+if [ -z $CONSOLE ]; then
+	cmd='screen '$cmd
 else
-	#echo "screen ./../build/bin/geth --nodiscover --port 30309 --networkid 536354 console 2>> $1"
-	call=`./../build/bin/geth --nodiscover --port 30309 --networkid "536354" console 2>> $1`
+	cmd=$cmd ' 2>> $CONSOLE'
 fi
+
+eval $cmd
 
 popd

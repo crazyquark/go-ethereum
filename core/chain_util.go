@@ -49,19 +49,17 @@ var (
 // given the parent block's time and difficulty.
 func CalcDifficulty(time, parentTime uint64, parentNumber, parentDiff *big.Int) *big.Int {
 	diff := new(big.Int)
-	//adjust := new(big.Int).Div(parentDiff, params.DifficultyBoundDivisor)
+	adjust := new(big.Int).Div(parentDiff, params.DifficultyBoundDivisor)
 	bigTime := new(big.Int)
 	bigParentTime := new(big.Int)
 
 	bigTime.SetUint64(time)
 	bigParentTime.SetUint64(parentTime)
 
-	exponentialAdjust := big.NewInt(2)
-	
 	if bigTime.Sub(bigTime, bigParentTime).Cmp(params.DurationLimit) < 0 {
-		diff.Mul(parentDiff, exponentialAdjust)
+		diff.Add(parentDiff, adjust)
 	} else {
-		diff.Div(parentDiff, exponentialAdjust)
+		diff.Sub(parentDiff, adjust)
 	}
 	if diff.Cmp(params.MinimumDifficulty) < 0 {
 		diff = params.MinimumDifficulty

@@ -25,9 +25,9 @@ var (
 	MaximumExtraDataSize   = big.NewInt(32)     // Maximum size extra data may be after Genesis.
 	ExpByteGas             = big.NewInt(10)     // Times ceil(log256(exponent)) for the EXP instruction.
 	SloadGas               = big.NewInt(50)     // Multiplied by the number of 32-byte words that are copied (round up) for any *COPY operation and added.
-	CallValueTransferGas   = big.NewInt(5000)   // Paid for CALL when the value transfor is non-zero.
-	CallNewAccountGas      = big.NewInt(5000)  // Paid for CALL when the destination address didn't exist prior.
-	TxGas                  = big.NewInt(5000)  // Per transaction. NOTE: Not payable on data of calls between transactions.
+	CallValueTransferGas   = big.NewInt(9000)   // Paid for CALL when the value transfor is non-zero.
+	CallNewAccountGas      = big.NewInt(25000)  // Paid for CALL when the destination address didn't exist prior.
+	TxGas                  = big.NewInt(21000)  // Per transaction. NOTE: Not payable on data of calls between transactions.
 	TxDataZeroGas          = big.NewInt(4)      // Per byte of data attached to a transaction that equals zero. NOTE: Not payable on data of calls between transactions.
 	DifficultyBoundDivisor = big.NewInt(2048)   // The bound divisor of the difficulty, used in the update calculations.
 	QuadCoeffDiv           = big.NewInt(512)    // Divisor for the quadratic particle of the memory cost equation.
@@ -48,7 +48,7 @@ var (
 	Sha3WordGas          = big.NewInt(6)      // Once per word of the SHA3 operation's data.
 	SstoreResetGas       = big.NewInt(5000)   // Once per SSTORE operation if the zeroness changes from zero.
 	SstoreClearGas       = big.NewInt(5000)   // Once per SSTORE operation if the zeroness doesn't change.
-	SstoreRefundGas      = big.NewInt(5000)  // Once per SSTORE operation if the zeroness changes to zero.
+	SstoreRefundGas      = big.NewInt(15000)  // Once per SSTORE operation if the zeroness changes to zero.
 	JumpdestGas          = big.NewInt(1)      // Refunded gas, once per SSTORE operation if the zeroness changes to zero.
 	IdentityGas          = big.NewInt(15)     //
 	GasLimitBoundDivisor = big.NewInt(1024)   // The bound divisor of the gas limit, used in update calculations.
@@ -57,7 +57,7 @@ var (
 	CreateDataGas        = big.NewInt(200)    //
 	Ripemd160Gas         = big.NewInt(600)    //
 	Ripemd160WordGas     = big.NewInt(120)    //
-	MinimumDifficulty    = big.NewInt(524288) // The minimum that the difficulty may ever be.
+	MinimumDifficulty    = big.NewInt(131072) // The minimum that the difficulty may ever be.
 	CallCreateDepth      = big.NewInt(1024)   // Maximum depth of call/create stack.
 	ExpGas               = big.NewInt(10)     // Once per EXP instuction.
 	LogGas               = big.NewInt(375)    // Per LOG* operation.
@@ -65,8 +65,8 @@ var (
 	StackLimit           = big.NewInt(1024)   // Maximum size of VM stack allowed.
 	TierStepGas          = big.NewInt(0)      // Once per operation, for a selection of them.
 	LogTopicGas          = big.NewInt(375)    // Multiplied by the * of the LOG*, per LOG transaction. e.g. LOG0 incurs 0 * c_txLogTopicGas, LOG4 incurs 4 * c_txLogTopicGas.
-	CreateGas            = big.NewInt(5000)  // Once per CREATE operation & contract-creation transaction.
-	SuicideRefundGas     = big.NewInt(5000)  // Refunded following a suicide operation.
+	CreateGas            = big.NewInt(32000)  // Once per CREATE operation & contract-creation transaction.
+	SuicideRefundGas     = big.NewInt(24000)  // Refunded following a suicide operation.
 	MemoryGas            = big.NewInt(3)      // Times the address of the (highest referenced byte in memory + 1). NOTE: referencing happens on read, write and in instructions such as RETURN and CALL.
-	TxDataNonZeroGas     = big.NewInt(1)     // Per byte of data attached to a transaction that is not equal to zero. NOTE: Not payable on data of calls between transactions.
+	TxDataNonZeroGas     = big.NewInt(68)     // Per byte of data attached to a transaction that is not equal to zero. NOTE: Not payable on data of calls between transactions.
 )

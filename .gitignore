@@ -38,3 +38,9 @@ profile.cov
 # vagrant
 .vagrant
 
+# QtCreator
+*.config
+*.creator
+*.files
+*.includes
+*.creator.user

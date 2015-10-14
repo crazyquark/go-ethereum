@@ -37,8 +37,8 @@ type Receipt struct {
 	GasUsed           *big.Int
 }
 
-func NewReceipt(root []byte, cumalativeGasUsed *big.Int) *Receipt {
-	return &Receipt{PostState: common.CopyBytes(root), CumulativeGasUsed: new(big.Int).Set(cumalativeGasUsed)}
+func NewReceipt(root []byte, cumulativeGasUsed *big.Int) *Receipt {
+	return &Receipt{PostState: common.CopyBytes(root), CumulativeGasUsed: new(big.Int).Set(cumulativeGasUsed)}
 }
 
 func (self *Receipt) SetLogs(logs state.Logs) {

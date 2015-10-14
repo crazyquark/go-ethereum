@@ -7,6 +7,9 @@ var greeterContract = web3.eth.contract(greeterCompiled.greeter.info.abiDefiniti
 // Require 73200 and have 69774
 // dataGas = 200 * len(data) = 200 * 366 = 73200
 // cgas = 100226
+var estimate = eth.estimateGas({from:web3.eth.accounts[0], data: greeterCompiled.greeter.code})
+console.log("Estimated gas usage: " + estimate + "\n");
+
 var greeter = greeterContract.new(_greeting,{from:web3.eth.accounts[0], data: greeterCompiled.greeter.code, gas: 173426}, function(e, contract){
   if(!e) {
 

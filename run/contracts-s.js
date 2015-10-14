@@ -4,14 +4,15 @@ var greeterCompiled = web3.eth.compile.solidity(greeterSource)
 var _greeting = "Hello World!"
 var greeterContract = web3.eth.contract(greeterCompiled.greeter.info.abiDefinition);
 
-var greeter = greeterContract.new(_greeting,{from:web3.eth.accounts[0], data: greeterCompiled.greeter.code, gas: 6000}, function(e, contract){
+// Require 73200 and have 69774
+var greeter = greeterContract.new(_greeting,{from:web3.eth.accounts[0], data: greeterCompiled.greeter.code, gas: 173426}, function(e, contract){
   if(!e) {
 
     if(!contract.address) {
       console.log("Contract transaction send: TransactionHash: " + contract.transactionHash + " waiting to be mined...");
 
     } else {
-      console.log("Contract mined! Address: " + contract.address);
+      console.log("Contract mined! Address: " + contract.address + "\n");
       console.log(contract);
     }
 

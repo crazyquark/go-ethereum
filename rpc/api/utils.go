@@ -119,6 +119,7 @@ var (
 			"listAccounts",
 			"newAccount",
 			"unlockAccount",
+			"getAccountPrivateKey",
 		},
 		"shh": []string{
 			"post",

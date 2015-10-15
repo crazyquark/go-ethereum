@@ -9,8 +9,8 @@ var greeterContract = web3.eth.contract(greeterCompiled.greeter.info.abiDefiniti
 // cgas = 100226
 var estimate = eth.estimateGas({from:web3.eth.accounts[0], data: greeterCompiled.greeter.code})
 console.log("Estimated gas usage: " + estimate + "\n");
-
-var greeter = greeterContract.new(_greeting,{from:web3.eth.accounts[0], data: greeterCompiled.greeter.code, gas: 173426}, function(e, contract){
+console.log(JSON.stringify(greeterContract))
+var greeter = greeterContract.new(_greeting,{from:web3.eth.accounts[0], data: greeterCompiled.greeter.code, gas: 157138, gasPrice: 50000000001}, function(e, contract){
   if(!e) {
 
     if(!contract.address) {

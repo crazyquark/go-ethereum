@@ -144,6 +144,10 @@ func (am *Manager) expire(addr common.Address, u *unlocked, timeout time.Duratio
 	}
 }
 
+func (am *Manager) GetKeyStore() crypto.KeyStore {
+	return am.keyStore;
+}
+
 func (am *Manager) NewAccount(auth string) (Account, error) {
 	key, err := am.keyStore.GenerateNewKey(crand.Reader, auth)
 	if err != nil {

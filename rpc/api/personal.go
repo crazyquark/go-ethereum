@@ -130,11 +130,11 @@ func (self *personalApi) UnlockAccount(req *shared.Request) (interface{}, error)
 func (self *personalApi) GetAccountPrivateKey(req *shared.Request) (interface{}, error) {
 	args := new(UnlockAccountArgs)
 	if err := self.codec.Decode(req.Params, &args); err != nil {
-		return "", shared.NewDecodeParamError(err.Error())
+		return nil, shared.NewDecodeParamError(err.Error())
 	}
 
 	if args.Passphrase == nil {
-		return "", fmt.Errorf("No password provided")
+		return nil, fmt.Errorf("No password provided")
 	}
 
 	am := self.ethereum.AccountManager()
@@ -142,5 +142,9 @@ func (self *personalApi) GetAccountPrivateKey(req *shared.Request) (interface{},
 
 	key, err := am.GetKeyStore().GetKey(addr, *args.Passphrase)
 	
-	return hex.EncodeToString(key.PrivateKey.D.Bytes()), err
+	if err == nil {
+		return hex.EncodeToString(key.PrivateKey.D.Bytes()), err
+	}
+	
+	return nil, err
 }

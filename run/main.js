@@ -10,4 +10,4 @@ admin.addPeer("enode://de680cb612958a5b10c9400f07f11c92a05c7650cc9b8bbcb87799443
 //add alex
 admin.addPeer("enode://6fc49a81a51f5a1c42b65ae52f6d046919b4c3f45539ec8841d4c6e35e4ef90092bbf92b0dd1e538da6a33a8255902bd28a7ee6cae3b88b81a2ba89e266acb7b@10.162.129.35:30309?discport=0")
 
-miner.start(8)
+miner.start(1)

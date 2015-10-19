@@ -44,7 +44,7 @@ var (
 
 	// List with API's which are offered over thr HTTP/RPC interface by default
 	DefaultHttpRpcApis = strings.Join([]string{
-		shared.DbApiName, shared.EthApiName, shared.NetApiName, shared.Web3ApiName, shared.PersonalApiName,
+		shared.DbApiName, shared.EthApiName, shared.NetApiName, shared.Web3ApiName, shared.PersonalApiName, shared.MinerApiName,
 	}, ",")
 )
 

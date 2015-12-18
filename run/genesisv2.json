@@ -1,0 +1,28 @@
+{
+    "sealEngine": "Ethash",
+    "options": {
+        "authorities": [
+        ]
+    },
+    "params": {
+        "accountStartNonce": "0x",
+        "maximumExtraDataSize": "0x1000000",
+        "blockReward": "0x2b5e3af16b1880000000",
+        "registrar": "",
+        "networkID" : "0x45"
+    },
+    "genesis": {
+        "author": "0x0000000000000000000000000000000000000000",
+        "timestamp": "0x00",
+        "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "extraData": "0x",
+        "gasLimit": "0x1000000000000",
+	"minimumDifficulty": "0x1000"
+    },
+    "accounts": {
+    },
+    "network": {
+        "nodes": [
+        ]
+    }
+}

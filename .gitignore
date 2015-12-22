@@ -22,6 +22,10 @@ Godeps/_workspace/bin
 *~
 .project
 .settings
+*.includes
+*.files
+*.creator*
+*.config
 
 deploy/osx/Mist.app
 deploy/osx/Mist\ Installer.dmg
